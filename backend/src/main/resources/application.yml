@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: automarket
+  datasource:
+    url: jdbc:postgresql://localhost:5432/automarket
+    username: automarket
+    password: automarket
+  jpa:
+    hibernate:
+      ddl-auto: update   # ??????? ???????: ?? dev ?????, ? prod ?????????? Flyway
+    open-in-view: false
+    show-sql: true
+
+server:
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /api/docs
+  swagger-ui:
+    path: /api/swagger
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
