@@ -1,16 +1,23 @@
 package com.automarket.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    // Русский коммент: На dev разрешаем фронту с 5173 порта ходить на /api/**
+
+
+    @Value("${app.cors.origins}")
+    private String corsOrigins;
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        String[] origins = corsOrigins.split("\\s*,\\s*");
+
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:5173")
-                .allowedMethods("GET","POST","PUT","PATCH","DELETE","OPTIONS")
-                .allowCredentials(true);
+            .allowedOrigins(origins)
+            .allowedMethods("GET","POST","PUT","PATCH","DELETE","OPTIONS")
+            .allowCredentials(true);
     }
 }

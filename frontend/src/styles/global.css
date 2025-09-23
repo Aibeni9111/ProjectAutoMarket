@@ -1,0 +1,30 @@
+﻿@import "tailwindcss";
+
+:root { color-scheme: light; }
+html, body, #root { height: 100%; }
+body { @apply bg-zinc-50 text-zinc-900 font-sans; }
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6;
+}
+
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+
+
+@keyframes slide-rtl {
+  0%   { transform: translateX(110%); }
+  100% { transform: translateX(-110%); }
+}
+.animate-slide-rtl {
+  animation: slide-rtl 16s linear infinite;
+}
+
+
+.group:hover .animate-slide-rtl {
+  animation-play-state: paused;
+}

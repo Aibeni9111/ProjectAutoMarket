@@ -1,24 +1,17 @@
 spring:
   application:
     name: automarket
-  datasource:
-    url: jdbc:postgresql://localhost:5432/automarket
-    username: automarket
-    password: aibeni
-  jpa:
-    hibernate:
-      ddl-auto: update   # ??????? ???????: ?? dev ?????, ? prod ?????????? Flyway
-    open-in-view: false
-    show-sql: true
+
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
+# Общие настройки
 springdoc:
-  api-docs:
-    path: /api/docs
-  swagger-ui:
-    path: /api/swagger
+  api-docs.path: /api/docs
+  swagger-ui.path: /api/swagger
 
 logging:
   level:

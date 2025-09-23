@@ -1,13 +1,15 @@
+// frontend/vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173,
+    port: 5209,
+    strictPort: true, // ← НЕ прыгаем по портам, если занят — скажет прямо
     proxy: {
-      // Русский коммент: всё, что начинается с /api, уходит на бэкенд на 8080
-      '/api': { target: 'http://localhost:8080', changeOrigin: true }
+      '/api':   { target: 'http://localhost:8080', changeOrigin: true },
+      '/admin': { target: 'http://localhost:8080', changeOrigin: true },
     }
   },
   resolve: { alias: { '@': '/src' } }
